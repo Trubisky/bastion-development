@@ -1,5 +1,5 @@
 //Module for stripe integration
-const stripe = require('stripe')('sk_test_51MihKmACbrOn7mSYlM50z7gAqWxvvjRnCWLtM5yQUDYVlCKWlS2DVAC8zAUcui1WDyQBGcV8oLK0n4D6bC7thRPw00rvEJTzZ5');
+const stripe = require('stripe')('');
 var dbModule = require('/home/modules/database.js')
 
 
