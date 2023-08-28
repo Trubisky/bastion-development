@@ -1,0 +1,322 @@
+.dcontent {
+    height : 250%;
+}
+
+.a-back {
+    background-color: black;
+    width : 100vw;
+    height : auto;
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-atext {
+    font-family: 'Montserrat';
+    font-size : 5.5vmin;
+    font-weight: bold;
+    color : white;
+    margin-top : 6vh;
+}
+
+.a-btext {
+    font-family : 'Fira Sans';
+    font-size : 2.4vmin;
+    font-weight : 200;
+    color : white;
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
+.a-abutton {
+    height: 8vh;
+    width: 20%;
+    background-color: #00E8E8;
+    border-color: #00E8E8;
+    text-align: center;
+    justify-content: center;
+    outline: none;
+    margin-top: 2vh;
+    margin-right: 27.5%;
+    margin-left: 27.5%;
+    border-radius: 0%;
+    
+  }
+
+  .a-bbutton {
+    height: 8vh;
+    width: 20%;
+    background-color: white;
+    border-color: white;
+    text-align: center;
+    justify-content: center;
+    outline: none;
+    margin-top: 1.5vh;
+    margin-right: 27.5%;
+    margin-left: 27.5%;
+    margin-bottom : 5.5vh;
+    border-radius: 0%;
+    
+  }
+
+  .buttontxt {
+    font-family: 'Fira Sans';
+    font-size: 2.5vmin;
+    line-height: 2vmin;
+    font-weight: 600;
+    color: black;
+  }
+
+
+.b-atext {
+    font-family: 'Montserrat';
+    font-size : 3.5vmin;
+    font-weight: bold;
+    color : black;
+    
+}
+
+.b-btext {
+    font-family : 'Fira Sans';
+    font-size : 2.4vmin;
+    font-weight : 200;
+    color : black;
+    margin-left : 10vw;
+    margin-right : 10vw;
+
+}
+
+.b-img {
+    width : 100%;
+    height : auto;
+}
+
+.b-back {
+    display : inline-flex;
+}
+
+.c-back {
+    background-color: black;
+    width : 100vw;
+    height : 80vh;
+    display : flex;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-images {
+    flex : 1;
+    position : relative;
+    margin-left: 15%;
+    margin-right : 15%;
+}
+
+.c-text {
+    text-align: right;
+    margin-right : 5%;
+    flex : 1;
+}
+
+.c-atext {
+    font-family: 'Montserrat';
+    font-size: 2vmin;
+    color: white;
+}
+
+.c-btext {
+    font-family: 'Montserrat';
+    font-size: 5vmin;
+    font-weight: bold;
+    color: white;
+}
+
+.c-ctext {
+    font-family: 'Fira Sans';
+    font-size: 2.4vmin;
+    font-weight: normal;
+    color: white;
+}
+
+.c-bimage {
+    position : absolute;
+    top : 40%;
+    left : 40%;
+}
+
+
+.d-back {
+    width : 100vw;
+    height : 80vh;
+    display : flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-text2 {
+    text-align: left;
+    margin-left : 5%;
+    flex : 1;
+}
+
+
+
+.c-images2 {
+    position : relative;
+    margin-right : 15%;
+    margin-left : 15%;
+}
+
+.d-backleft {
+    background-color: white;
+    height : 100%;
+    width : 50%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.d-backright {
+    background-color: #F6F6F6;
+    text-align: center;
+    height : 100%;
+    width : 50%;
+}
+
+.d-back-image {
+    width : 50%;
+    height : 50%;
+}
+
+.d-text {
+    font-family: 'Montserrat';
+    font-size : 6vmin;
+    font-weight : bold;
+    margin-top : 15%;
+    margin-bottom : 10%;
+}
+ .e-text {
+    margin-left : 10%;
+ }
+
+.e-back {
+    background-color: black;
+    width : 100vw;
+    height : 80vh;
+    align-items: center;
+}
+
+.e-atext {
+    font-family: 'Montserrat';
+    font-size: 6vmin;
+    font-weight: bold;
+    color: white;
+}
+
+.e-btext {
+    font-family: 'Fira Sans';
+    font-size: 3.4vmin;
+    font-weight: normal;
+    color: white;
+}
+
+.e-ctext {
+    display : flex;
+    align-items: center;
+}
+
+.e-cctext {
+    font-family: 'Fira Sans';
+    font-size : 3vmin;
+    color : #00E8E8;
+    margin-right: 2%;
+}
+
+.f-tile {
+    width: 20vw;
+    height: 40vw;
+    border: 1px solid #ccc;
+    display : flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-right: 5%;
+  }
+  
+  .f-highlight {
+    border-width: 0.5vmin;
+    border-color: #00E8E8 ;
+  }
+  .image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+
+  .f-bold {
+    font-family: 'Montserrat';
+    font-size : 3vmin;
+
+  }
+
+  .f-bgkd {
+    background-color: white;
+    height : 100%;
+  }
+  .f-text{
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    margin-left: 5%;
+  }
+
+  .f-tiles {
+    display : flex;
+    justify-content: space-between;
+    
+  }
+  
+  .text-line {
+    margin-bottom: 5%;
+    color : gray;
+    font-family: 'Fira Sans';
+    font-size : 2vmin;
+  }
+  
+  .centered-text {
+    margin-top : 28%;
+    text-align: center;
+    color : #00E8E8;
+    font-family: 'Montserrat';
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  .text-overlay {
+    position: absolute;
+    z-index: 1; /* Optional: Add background color to make the text more readable */
+    text-align : center;
+  }
+  

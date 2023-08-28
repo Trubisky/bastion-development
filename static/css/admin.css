@@ -1,0 +1,69 @@
+.sortContainer{
+	
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+   
+    margin-left: 3vw;
+  
+}
+
+.sortText {
+    font-family: 'Montserrat';
+    font-size: 3vmin;
+    letter-spacing: 8%;
+    color: #222222;
+  }
+  
+  .dropdown-trigger{
+    background-color: #E3E4E6;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .dropdown-button{
+    background-color:#E3E4E6;
+    border-color: #E3E4E6;
+    border-radius: 20px;
+    padding: 5px 10px;
+    box-shadow: 0 0 0 0 transparent;
+    text-shadow: none; 
+    border: none;
+  }
+  
+  .boxadd {
+	z-index: 2; /* Alert Box Will Appear Above */
+	display: block;
+	position: absolute;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	border: none 1px solid;
+	border-radius: 0px;
+	width: 80vmin;
+	height: 80vmin;
+	padding: 0px 0px;
+}
+
+.box-title {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	margin-left: 4.3vmin;
+	margin-bottom: 3.5vmin;
+	margin-top: 4vmin;
+	font-size: 4vmin;
+}
+
+.inputx {
+	display: block;
+	width: 90%;
+	height: 9.2vmin;
+	margin: auto;
+	margin-bottom: 2.3vmin;
+	font-size: 3.2vmin;
+	border-radius: 8px;
+}

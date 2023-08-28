@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<script src="/resources/js/fontawesome.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="/resources/js/croppr.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+		<!-- end styling resources -->
+		
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+
+		<!--Vue and jquery resources, plus axios-->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+		
+		<style>
+			.spacing{
+				margin-left: 3vmin;
+				margin-right: 3vmin;
+				color: black;
+				font-size: 3vmin;
+				font-family: 'Montserrat';
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar is-black b-navpad" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="https://dev.bastionfit.com/">
+						<img src="https://uploads-ssl.webflow.com/6254580345036e67d0add6c0/6261592feef3737226a05177_White%20no%20background%20bigger%20(1).png" alt="BastionFit" width="112" height="28">
+					</a>
+					<a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': showHamburger}" v-on:click="toggleHamburger()">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="menu">
+					<div class="navbar-end">
+						<a class="navbar-item" v-on:click="navigate('/')" v-bind:class="{'b-item': isMobile, 'tealcolor': route == '/'}">
+							Home
+						</a>
+						<a class="navbar-item"  v-on:click="navigate('/survey')" v-bind:class="{'b-item': isMobile, 'tealcolor': route == '/survey'}">
+							Join
+						</a>
+						<a class="navbar-item" v-on:click="navigate('/login')" v-bind:class="{'b-item': isMobile, 'tealcolor': route == '/login'}">
+							Login
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}" href="https://blog.bastionfit.com/">
+							Blog
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+							About
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+							Shop
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+							Contact
+						</a>
+					</div>
+				</div>
+				
+			</nav>
+	</body>
+</html>

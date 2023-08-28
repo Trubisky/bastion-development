@@ -1,0 +1,15 @@
+.chatWindow{
+	width: 30%;
+	aspect-ratio: 1/1;
+	margin-left: 35%;
+	margin-top: 15vmin;
+	background-color: white;
+}
+
+.desktopChatHeader{
+	width: 100%;
+	background-color: var(--b-darkblack);
+	padding: 2vmin;
+	color: white;
+	font-size: 3vmin;
+}

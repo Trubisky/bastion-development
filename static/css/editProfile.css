@@ -1,0 +1,131 @@
+
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.editProfile {
+		width: 70%;
+		margin-left: 15%;
+		margin-top: 2vmin;
+	}
+	
+	.box{
+		color: black;
+	}
+	
+	.arrowAdjust{
+		font-size: 2vmin;
+	}
+	
+	.editProfileImage{
+		width: 25%;
+		margin-left: 37.5%;
+		aspect-ratio: 1/1;
+		border-radius: 1000px;
+		border-style: solid;
+		border-width: thin;
+		margin-bottom: 3vmin;
+	}
+	
+	.aboutContent{
+		padding: 4vmin;
+		font-family: 'Montserrat';
+		font-size: 1.5vmin;
+		padding-top: 0vmin;
+	}
+	
+	.certAdjust{
+		margin-left: 4vmin;
+	}
+	
+	.aboutEdit{
+		width: 100%;
+		
+	}
+	
+	.imageCrop{
+		width: 30%;
+		margin-left: 35%;
+		margin-top: 10vmin;
+		background-color: white;
+	}
+	
+	.cropButton{
+		width: 40%;
+		margin-left: 30%;
+		margin-top: 2vmin;
+	}
+	
+	#cropprImage{
+		width: 100%;	
+		height: auto;
+	}
+	
+	.cropLoading{
+		width: 100%;
+		text-align: center;
+		margin-top: 1vmin;
+		font-size: 4vmin;
+		
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	.arrowAdjust{
+		margin-top: 2vmin;
+	}
+	
+	.editProfileImage{
+		width: 40%;
+		margin-left: 30%;
+		aspect-ratio: 1/1;
+		border-radius: 1000px;
+		border-style: solid;
+		border-width: thin;
+		margin-bottom: 3vmin;
+	}
+	
+	.aboutContent{
+		padding: 4vmin;
+		font-family: 'Montserrat';
+		font-size: 4vmin;
+		padding-top: 0vmin;
+	}
+	
+	.aboutEdit{
+		width: 100%;
+		padding: 4vmin;
+	}
+	
+	.imageCrop{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 40vmin;
+		background-color: white;
+	}
+	
+	.cropButton{
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 1vmin;
+	}
+	
+	#cropprImage{
+		width: 100%;	
+		height: auto;
+	}
+	
+	.cropLoading{
+		width: 100%;
+		text-align: center;
+		margin-top: 5vmin;
+		font-size: 8vmin;
+		
+	}
+	
+}
+
+
+
+.certInput{
+	width: 80%;
+}

@@ -1,0 +1,79 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	
+	.editContentBox{
+		background-color: white;
+		border-radius: 10px;
+		width: 30%;
+		margin-left: 35%;
+		
+		margin-top: 10%;
+	}
+
+
+	.aboutContentSmaller{
+		padding: 4vmin;
+		font-family: 'Montserrat';
+		font-size: 1.5vmin;
+		padding-top: 0vmin;
+		margin-bottom: 0 !important;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	
+	.editContentBox{
+		background-color: white;
+		border-radius: 10px;
+		width: 80%;
+		margin-left: 10%;
+		
+		margin-top: 30%;
+	}
+
+
+	.aboutContentSmaller{
+		padding: 4vmin;
+		font-family: 'Montserrat';
+		font-size: 3.5vmin;
+		padding-top: 0vmin;
+		margin-bottom: 0 !important;
+	}
+	
+}
+
+.currentSubscription{
+	padding-left: 4vmin; 
+	padding-right: 4vmin; 
+	padding-top: 4vmin; 
+	font-weight: 900;
+	font-size: 4vmin;
+}
+
+
+/*once again, do not use negative margin top. I hate css */
+.currentSubscriptionText{
+	padding-left: 4vmin; 
+	padding-right: 4vmin; 
+	font-size: 3.5vmin;
+	margin-top: -4vmin;
+}
+
+.changePlan{
+	margin-left: 12.5%;
+	margin-top: 5vmin;
+	border: none;
+}
+
+.changeCoach{
+	margin-left: 12.5%;
+	margin-top: 2vmin;
+	background-color: white;
+}
+
+/*doc switches to transactions page here */
+.transactionTitle{
+	color: var(--b-darkblue);
+}

@@ -1,0 +1,347 @@
+/* root color scheme for overall site */
+:root {
+  --teal: #00E8E8;
+  --b-black: #4a4a4a;
+  --b-darkblack: #222222;
+  --b-darkblue: #24336F;
+}
+
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.profileImage{
+		width: 10%;
+		margin-left: 45%;
+		aspect-ratio: 1/1;
+		border-radius: 200px;
+		border-color: white;
+		border-style: solid;
+		border-width: thick;
+		margin-top: 5vmin;
+	}
+	
+	.b-breaker{
+		width: 100%;
+		height: 0.3vmin;
+		background-color: #E3E4E6;
+	}
+	
+	.b-button {
+		font-family: 'Montserrat';
+		font-weight: bold;
+		height: 5vmin;
+		width: 30%;
+		background-color: var(--teal);
+		
+	}
+	
+	.b-centerbutton{
+		margin-left: 35%;
+	}
+	
+	.b-acctop{
+		font-family: 'Montserrat';
+		font-size: 3vmin;
+		font-weight: 900;
+		
+		padding: 1vmin;
+	}
+	
+	
+	.b-textinput{
+		width: 100%;
+		height: 7vmin;
+		margin-top: 4vmin;
+		font-size: 3vmin;
+		font-family: 'Montserrat';
+	}
+	
+	
+	.alreadyjoined {
+		margin-top: 3vmin;
+		font-size: 3vmin;
+		opacity: 0.9;
+		text-align: center;
+		font-family: 'Montserrat';
+	}
+	
+	/*top alert*/
+	.top-alert{
+		width: 100%;
+		padding-top: 0.5vmin;
+		padding-bottom: 0.5vmin;
+		text-align: center;
+		background-color: var(--teal);
+		letter-spacing: .01vmin;
+		font-size: 1.8vmin;
+		color: black;
+	}
+	
+	#slideUpMessage{
+		width: 40%;
+		padding: 2vmin;
+		text-align: center;
+		margin-left: 30%;
+		font-size: 2vmin;
+		position: fixed;
+		bottom: -15vmin;
+		z-index: 1;
+		border-style: solid;
+		border-color: var(--teal);
+		border-radius: 100px;
+	}
+	
+	.b-surveyform{
+		
+		width: 100%;
+		
+		font-weight: bold;
+		font-family: 'Montserrat';
+	}
+	
+	.b-surveycolumn{
+		padding: 2vmin;
+		font-size: 2.5vmin;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+    /* MOBILE */
+	.profileImage{
+		width: 40%;
+		margin-left: 30%;
+		aspect-ratio: 1/1;
+		border-radius: 200px;
+		border-color: white;
+		border-style: solid;
+		border-width: thick;
+		margin-top: 5vmin;
+	}
+	
+	.b-breaker{
+		width: 100%;
+		height: 0.5vmin;
+		background-color: #E3E4E6;
+	}
+	
+	.b-button {
+		font-family: 'Montserrat';
+		font-weight: bold;
+		height: 15vmin;
+		width: 75%;
+		background-color: var(--teal);
+		
+	}
+	
+	.b-centerbutton{
+		margin-left: 10vmin;
+	}
+	
+	.b-acctop{
+		font-family: 'Montserrat';
+		font-size: 5vmin;
+		font-weight: 900;
+		text-align: center;
+		padding: 4vmin;
+	}
+	
+	
+	.b-textinput{
+		width: 90vmin;
+		margin-left: 5vmin;
+		margin-top: 4vmin;
+		font-family: 'Montserrat';
+	}
+	
+	
+	.alreadyjoined {
+		margin-top: 3vmin;
+		font-size: 3.5vmin;
+		opacity: 0.9;
+		text-align: center;
+		font-family: 'Montserrat';
+	}
+	
+	/*top alert*/
+	.top-alert{
+		width: 100%;
+		padding-top: 2.5vmin;
+		padding-bottom: 2.5vmin;
+		text-align: center;
+		background-color: var(--teal);
+		letter-spacing: .01vmin;
+		font-size: 3.5vmin;
+		color: black;
+	}
+	
+	#slideUpMessage{
+		width: 80vmin;
+		padding: 2vmin;
+		text-align: center;
+		margin-left: 10%;
+		font-size: 3vmin;
+		position: fixed;
+		bottom: -15vmin;
+		z-index: 1;
+		border-style: solid;
+		border-color: var(--teal);
+		border-radius: 100px;
+	}
+	
+	.b-surveyform{
+		margin-top: 10vmin;
+		width: 90vmin;
+		margin-left: 5vmin;
+		font-weight: bold;
+		font-family: 'Montserrat';
+	}
+	
+	.b-surveycolumn{
+		padding: 2vmin;
+	}
+
+	
+}
+
+.b-surveycolumns{
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+		width: 90%;
+		margin-left: 5%;
+	}
+/* body settings */
+/* Montserrat font currently has 400 and 500 thickness imported */
+
+body {
+	font-family: 'Montserrat' !important;
+	font-weight: 500 !important;
+	 letter-spacing: -0.5px !important;
+	 color: black !important;
+}
+
+/* navbar section */
+.b-navpad{
+	padding-top: 3vmin;
+	padding-bottom: 3vmin;
+	padding-left: 3vmin;
+	padding-right: 3vmin;
+  background-color: var(--b-darkblack) !important;
+}
+
+.b-navpadnew{
+	padding-top: 3vmin;
+	padding-bottom: 3vmin;
+	padding-left: 3vmin;
+	padding-right: 3vmin;
+
+}
+
+.b-navpad-dnew{
+	padding-top: 1vmin;
+	padding-bottom: 1vmin;
+	padding-left: 3vmin;
+	padding-right: 3vmin;
+}
+
+.b-navpad-d{
+	padding-top: 1vmin;
+	padding-bottom: 1vmin;
+	padding-left: 3vmin;
+	padding-right: 3vmin;
+  background-color: var(--b-darkblack) !important;
+}
+
+.b-navmenu{
+  background-color: #f5f5f5;
+  padding-top: 30vmin;
+  height: 100vmax;
+}
+
+.b-item{
+  text-align: center;
+  color: black;
+  font-size: 6vmin;
+}
+
+.b-disabled{
+	text-decoration: line-through;
+}
+
+
+
+/*buttons*/
+
+
+/*survey form*/
+
+
+
+/*radio buttons for forms*/
+.b-formradio{
+	height: 4vmin;
+	width: 4vmin;
+}
+
+
+
+.nopadding{
+	padding: 0;
+}
+
+.navbar-item{
+	margin-left: 2vmin;
+	
+}
+
+.underProfilePic{
+	text-align: center;
+	font-family: 'Montserrat';
+	font-size: 7vmin;
+	margin-top: 3vmin;
+}
+
+
+/*router view transition*/
+.universal-enter-active, .universal-leave-active {
+  transition-property: opacity;
+  transition-duration: .15s;
+}
+
+.universal-enter-active {
+  transition-delay: .1s;
+}
+
+.universal-enter, .universal-leave-active {
+  opacity: 0;
+}
+
+.messagein{
+	animation-name: messagein;
+	animation-duration: 700ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+.messageout{
+	animation-name: messageout;
+	animation-duration: 700ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+@keyframes messagein {
+  0% {
+	bottom: -15vmin;
+  }
+  100% {
+	bottom: 7vmin;
+  }
+}
+
+@keyframes messageout {
+  0% {
+	bottom: 7vmin;
+  }
+  100% {
+	bottom: -15vmin;
+  }
+}

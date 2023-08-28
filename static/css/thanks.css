@@ -1,0 +1,93 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.thankYouBackground{
+		background-color: var(--b-darkblack);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+	}
+	
+	.rookImage{
+		height: 14vmin;
+		width: auto;
+	}
+	
+	.thxImageFix{
+		margin-top: 18vmin;
+		margin-left: 32%;
+	}
+	
+	.thxThankYou{
+		margin-top: 10vmin;
+		margin-left: 30%;
+	}
+	
+	#thankYouText{
+		height: 40vmin;
+		width: auto;
+	}
+	
+	.thankYouMessage{
+		width: 70%;
+		margin-left: 15%;
+		text-align: center;
+		color: white;
+		font-weight: 300;
+		font-size: 6vmin;
+	}
+	
+	#goToHome{
+		position: fixed;
+		bottom: 30;
+		right: 30;
+		color: white;
+		font-size: 3vmin;
+	}
+}
+
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	.thankYouBackground{
+		background-color: var(--b-darkblack);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+	}
+	
+	.rookImage{
+		height: 14vmin;
+		width: auto;
+	}
+	
+	.thxImageFix{
+		margin-top: 70vmin;
+		margin-left: 17vmin;
+	}
+	
+	.thxThankYou{
+		margin-top: 40vmin;
+		margin-left: 11vmin;
+	}
+	
+	#thankYouText{
+		height: 40vmin;
+		width: auto;
+	}
+	
+	.thankYouMessage{
+		width: 70%;
+		margin-left: 15%;
+		text-align: center;
+		color: white;
+		font-weight: 300;
+		font-size: 6vmin;
+	}
+	
+	#goToHome{
+		position: fixed;
+		bottom: 30;
+		right: 30;
+		color: white;
+	}
+}

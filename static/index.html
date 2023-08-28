@@ -1,0 +1,206 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="shortcut icon" href="https://uploads-ssl.webflow.com/6254580345036e67d0add6c0/6256278ee553ab33b2cba289_20220411_221335_0000.png">
+		<title>Bastion Fit</title>
+		<!-- External styling and font resources -->
+		<script src="/resources/js/fontawesome.js"></script>
+		<script src="/resources/js/croppr.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+		<!-- end styling resources -->
+		
+		<!--Vue and jquery resources, plus axios-->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+		<!--End external JS resources -->
+		
+		<!--Internal styling resources -->
+		<link rel="stylesheet" href="/css/bastion-templates.css">
+		<link rel="stylesheet" href="/css/home.css">
+		<link rel="stylesheet" href="/css/create-account.css">
+		<link rel="stylesheet" href="/css/survey.css">
+		<link rel="stylesheet" href="/css/croppr.css">
+		<link rel="stylesheet" href="/css/dashboard.css">
+		<link rel="stylesheet" href="/css/editProfile.css">
+		<link rel="stylesheet" href="/css/editSubscription.css">
+		<link rel="stylesheet" href="/css/clients.css">
+		<link rel="stylesheet" href="/css/admin.css"> 
+		<link rel="stylesheet" href="/css/messageHome.css">
+		<link rel="stylesheet" href="/css/thanks.css">
+		<link rel="stylesheet" href="/css/clientPreview.css">
+		<link rel="stylesheet" href="/css/coachOffer.css">
+		<link rel="stylesheet" href="/css/coachJoin.css">
+		<link rel="stylesheet" href="/css/chat.css">
+		<link rel="stylesheet" href="/css/desktop/homepage.css">
+		<!--end internal styling-->
+		
+		<!-- Vue page links -->
+		<script src="/Home.vue.js"></script>
+		<script src="/createAccount.vue.js"></script>
+		<script src="/Login.vue.js"></script>
+		<script src="/Survey.vue.js"></script>
+		<script src="/Clients.vue.js"></script>
+		<script src="/adminCoaches.vue.js"></script>
+		<script src="/Dashboard.vue.js"></script>
+		<script src="/coachDashboard.vue.js"></script>
+		<script src="/adminDashboard.vue.js"></script>
+		<script src="/adminViewCoach.vue.js"></script>
+		<script src="/adminViewClient.vue.js"></script>
+		<script src="/adminViewCoachClients.vue.js"></script>
+		<script src="/editProfile.vue.js"></script>
+		<script src="/editSubscription.vue.js"></script>
+		<script src="/Transactions.vue.js"></script>
+		<script src="/Memberships.vue.js"></script>
+		<script src="/clientPreview.vue.js"></script>
+		<script src="/messageHome.vue.js"></script>
+		<script src="/Chat.vue.js"></script>
+		<script src="/adminClients.vue.js"></script>
+		<script src="/Offers.vue.js"></script>
+		<script src="/coachOffer.vue.js"></script>
+		<script src="/viewCoach.vue.js"></script>
+		<script src="/viewActiveClient.vue.js"></script>
+		<script src="/coachJoin.vue.js"></script>
+		<script src="/forgotPassword.vue.js"></script>
+		<script src="/resetPassword.vue.js"></script>
+		<script src="/thankYou.vue.js"></script>
+		<!--end vue links -->
+	</head>
+	<body>
+		<div id="app">
+		<!--
+			<div class="top-alert">
+				Qualified Students get <b>25% OFF</b> Coaching
+			</div>
+			-->
+			<nav class="navbar is-white" role="navigation" aria-label="main navigation" v-bind:class="{'b-navpadnew': isMobile, 'b-navpad-dnew': !isMobile}">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="isMobile">
+						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					</a>
+					<a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': showHamburger}" v-on:click="toggleHamburger()">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="menu" v-bind:class="{'is-active': showHamburger, 'b-navmenu': isMobile}" v-show="!token">
+					<div class="navbar-start">
+						<a class="navbar-item" v-on:click="navigate('/')" v-bind:class="{'b-item': isMobile, 'menuItemSelected': route == '/'}">
+							Home
+						</a> 
+						<a class="navbar-item"  v-on:click="navigate('/survey')" v-bind:class="{'b-item': isMobile, 'menuItemSelected': route == '/survey'}">
+							Join
+						</a>
+						<a class="navbar-item" v-on:click="navigate('/login')" v-bind:class="{'b-item': isMobile, 'menuItemSelected': route == '/login'}">
+							Login
+						</a>
+					</div>
+					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="!isMobile">
+						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					</a>
+					<div class="navbar-end">
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}" href="https://blog.bastionfit.com/">
+							Blog
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+							About
+						</a>
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+							Shop
+						</a>
+					</div>
+				</div>
+				
+				<div class="navbar-menu" id="menu" v-bind:class="{'is-active': showHamburger, 'b-navmenu': isMobile}" v-show="token">
+					<!--
+					<img v-bind:src="profilePictureURL" class="profileImage" />
+					<div class="underProfilePic">
+						<div style="font-size: 4vmin;">
+							<label for="picture-upload"><i class="fa-solid fa-camera"></i> </label>
+							<br /><br />
+						</div>
+						{{name}}
+						<br />
+						<br />
+						<br />
+					</div>	
+					<a class="navbar-item b-item" v-on:click="logOut()">
+						Log Out
+					</a>
+					-->		
+					<div class="navbar-start">
+						<a class="navbar-item" v-on:click="navigate('/')"  v-bind:class="{'b-item': isMobile, 'tealcolor': route == '/'}">
+							Home
+						</a>
+						<a class="navbar-item"  v-on:click="navigate('/dashboard')"  v-bind:class="{'b-item': isMobile, 'tealcolor': route == '/dashboard' || route == '/coachDashboard' }">
+							Dashboard
+						</a>
+						<a class="navbar-item" href="https://blog.bastionfit.com/"  v-bind:class="{'b-item': isMobile}">
+							Blog
+						</a>
+					</div>
+					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="!isMobile">
+						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					</a>
+					<div class="navbar-end">
+						
+						<a class="navbar-item b-disabled"  v-bind:class="{'b-item': isMobile}">
+							About
+						</a>
+						<a class="navbar-item b-disabled"  v-bind:class="{'b-item': isMobile}">
+							Shop
+						</a>
+						<a class="navbar-item" v-on:click="logOut()"  v-bind:class="{'b-item': isMobile}">
+							Log Out
+						</a>
+					</div>
+				</div>
+				
+			</nav>
+			<transition name="universal" mode="out-in">
+				<router-view>
+			  
+				</router-view> 
+			</transition>
+			
+			<input id="picture-upload" type="file" v-on:change="uploadPicture" style="visibility: hidden;" value="null"/>
+			<div id="slideUpMessage" style="background-color: white;" v-bind:class="{messagein: playMessageIn, messageout: playMessageOut}">
+				{{sliderMessage}}
+			</div>
+			<div class="overlay" id="showLoading" style="display: none;">
+				<div style="text-align: center; margin-top: 80%; font-size: 15vmin; color: var(--teal);">
+					<i class="fa-solid fa-spinner fa-spin-pulse" style="background-color: white; border-radius: 9999px; padding: 4vmin;"></i>
+				</div>
+			</div>
+			<div class="overlay" id="desktopChatHub" style="display: none;">
+				<div class="chatWindow">
+					<div class="desktopChatHeader">
+						<div style="text-align: right; font-size: 2vmin;" class="closePopup">
+							<i class="fa-solid fa-circle-xmark fa-fade" v-on:click="closeChatDesktop()"></i>
+						</div>
+						Chat
+					</div>
+					<chat-window id="desktopChatWindow"></chat-window>
+					<chat-client id="desktopChatClient" style="display: none;"></chat-client>
+				</div>
+			</div>
+			<div class="overlay" v-if="showCroppr">
+				<div class="imageCrop box">
+					<img v-bind:src="cropprSrc" id="cropprImage"  />
+					<div class="cropLoading" v-if="!croppr">
+						<i class="fa-solid fa-spinner fa-spin"></i>
+					</div>
+					
+					<button class="button b-button cropButton" v-if="croppr" v-on:click="saveCrop">Save Image</button> 
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="Vue.js"></script>
+</html>

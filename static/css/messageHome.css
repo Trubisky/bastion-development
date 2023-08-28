@@ -1,0 +1,159 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	
+	.messageRow{
+		
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	
+	.messageImage{
+		width: 90%;
+		margin-left: 5%;
+		height: auto;
+		aspect-ratio: 1/1;
+		border-radius: 200px;
+	}
+	
+	.sendbar{
+		width: 95%;
+		margin-left: 2.5%;
+		padding-bottom: 2.5%;
+	}
+	
+	.sendMessageIcon{
+		font-size: 3vmin;
+	}
+	
+	.numberCoachOffers{
+		margin-top: 1vmin;
+		font-size: 3vmin;
+		text-align: center;
+		font-weight: 900;
+	}
+	
+	.filterColumn{
+		width: 95%;
+		margin-left: 2.5%;
+		margin-top: 5vmin;
+		font-size: 3vmin;
+		font-weight: 500;
+	}
+	
+	.offerImage{
+		width: 100%;
+		aspect-ratio: 1/1;
+		height: auto;
+	}
+	
+	.chatIcon{
+		font-size: 4vmin;
+		position: fixed;
+		bottom: 30;
+		right: 30;
+		border-radius: 9999px;
+		padding: 2vmin;
+		color: white;
+		background-color: black;
+		z-index: 2;
+	}
+	
+	.messageOverlayText{
+		position: fixed;
+		font-size: 3vmin;
+		bottom: 45;
+		width: 70%;
+		margin-left: 25%;
+	}
+}
+
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	
+	.messageRow{
+		height: 10%;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	
+	.messageImage{
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1/1;
+		border-radius: 200px;
+	}
+	
+	.sendbar{
+		position:fixed;
+		bottom: 10;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	
+	.sendMessageIcon{
+		font-size: 8vmin;
+	}
+	
+	.numberCoachOffers{
+		margin-top: 3vmin;
+		font-size: 4vmin;
+		text-align: center;
+		font-weight: 900;
+	}
+	
+	.offerImage{
+		width: 100%;
+		aspect-ratio: 1/1;
+		height: auto;
+	}
+	
+	.chatIcon{
+		font-size: 8vmin;
+		position: fixed;
+		bottom: 30;
+		right: 30;
+		border-radius: 9999px;
+		padding: 3vmin;
+		color: white;
+		background-color: black;
+		z-index: 2;
+	}
+	
+	.messageOverlayText{
+		position: fixed;
+		font-size: 4vmin;
+		bottom: 30;
+		width: 70%;
+		margin-left: 5%;
+	}
+
+}
+
+
+
+.messageGreeting{
+	overflow: clip;
+}
+.chatBox{
+	width: 95%;
+	margin-left: 2.5%;
+}
+
+.coachingOffer{
+	width: 90%;
+	margin-left: 5%;
+	border-style: groove;
+	padding: 1vmin;
+	color: black;
+}
+
+
+.messageOverlay{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+	background-color: rgba(0,0,0,0.1);
+}

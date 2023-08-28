@@ -1,0 +1,104 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.coachBackground{
+		color: black;
+	}
+	
+	.optionsContainer{
+		width: 40%;
+		margin-left: 30%;
+		display: block;
+		font-size: 3vmin;
+		color: black;
+		margin-top: 3vmin;
+		font-family: 'Montserrat';
+	}
+	
+	.profileText{
+		text-align: center;
+		color: black;
+		font-family: 'Montserrat';
+		font-size: 3vmin;
+	}
+	
+	.breaker-adjust{
+		margin-top: -2vmin;
+	}
+	
+	.subedit{
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 3vmin;
+		color: black;
+		font-weight: 150;
+		margin-top: 1vmin;
+	}
+	
+	
+	.button-top{
+		margin-top: 5vmin;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	
+	/* MOBILE */
+	
+	.coachBackground{
+		color: black;
+	}
+	
+	.optionsContainer{
+		width: 90%;
+		margin-left: 5%;
+		display: block;
+		font-size: 5vmin;
+		color: black;
+		margin-top: 3vmin;
+		font-family: 'Montserrat';
+	}
+	
+	.profileText{
+		text-align: center;
+		color: black;
+		font-family: 'Montserrat';
+	}
+	
+	.breaker-adjust{
+		margin-top: -4vmin;
+	}
+	
+	.subedit{
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 4vmin;
+		color: white;
+		font-weight: 150;
+		margin-top: 2vmin;
+	}
+	
+	
+	.button-top{
+		margin-top: 10vmin;
+	}
+
+}
+
+
+
+
+
+
+
+
+.coachname{
+	font-weight: 150;
+}
+
+.drop{
+	margin-top: 1.5vmin;
+}
+
+/* do not do this in most cases, I couldn't get the stupid fucking bar to move */
+
+

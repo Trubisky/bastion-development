@@ -1,0 +1,183 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	
+	.addPayoutInfo{
+		text-align: center; font-size: 2.5vmin; margin-top: 2vmin; font-weight: 900;
+	}
+	
+	.joinRadioButton{
+		height: 4vmin; width: 3vmin;
+	}
+	
+	.joinRadio{
+		align-items: center; display: flex; font-size: 8vmin;
+	}
+	
+	.attributeTitle{
+		font-size: 3vmin;
+		margin-top: 2vmin;
+	}
+	
+	.w95{
+		width: 50%;
+		margin-left: 25%;
+	}
+	
+	.width95{
+		width: 95%;
+		margin-left: 2.5%;
+		height: 4vmin !important;
+	}
+	
+	.cjStart{
+		text-align: center; margin-top: 20vmin; font-size: 5vmin; font-weight: 900;
+	}
+	.cjBelow{
+		text-align: center; font-size: 4vmin; margin-top: 4vmin; font-weight: 900;
+	}
+	
+	.cjQuestionHeader{
+		text-align: center; 
+		margin-top: 10vmin; 
+		font-size: 4vmin; 
+		font-weight: 900;
+	}
+	
+	.desktopRadio{
+		font-size: 2vmin;
+	}
+	
+	.cjComp{
+		border-style: solid;
+		border-color: var(--teal);
+		border-radius: 50px;
+		background-color: var(--teal);
+		padding: 0.5vmin;
+		margin-left: 0.5vmin;
+		display: inline-block;
+		font-size: 2vmin;
+		margin-top: 0.5vmin;
+	}
+	
+	.membershipText{
+		font-weight: 400; font-size: 2vmin; padding-top: 0.5vmin; padding-bottom: 0.5vmin;
+	}
+
+	.membershipPrompt{
+		font-weight: 500;
+		font-size: 2vmin;
+	}
+	
+	.dtInputAdjust{
+		width: 95% !important;
+	}
+	
+	.nameLocationTitle{
+		margin-left: 5%;
+		font-size: 2.3vmin;
+	}
+	
+	.languageProficiencyHeader{
+		font-size: 3vmin;
+		
+	}
+	
+	.addLanguage{
+		font-size: 2.5vmin;
+		color: var(--teal);
+		margin-left: 1rem;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	
+	.addPayoutInfo{
+		text-align: center; font-size: 4.5vmin; margin-top: 5vmin; font-weight: 900;
+	}
+	
+	.joinRadioButton{
+		height: 6vmin; width: 6vmin;
+	}
+	
+	.joinRadio{
+		align-items: center; display: flex; font-size: 8vmin;
+	}
+	
+	.w95{
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	
+	.addLanguage{
+		font-size: 4vmin;
+		color: var(--teal);
+		margin-left: 0.75rem;
+	}
+	
+	.nameLocationTitle{
+		margin-left: 5%;
+		font-size: 4vmin;
+	}
+	
+	.width95{
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	
+	.cjStart{
+		text-align: center; margin-top: 40vmin; font-size: 9vmin; font-weight: 900;
+	}
+	.cjBelow{
+		text-align: center; font-size: 5.5vmin; margin-top: 5vmin; font-weight: 900;
+	}
+	
+	.cjQuestionHeader{
+		text-align: center; 
+		margin-top: 18vmin; 
+		font-size: 8vmin; 
+		font-weight: 900;
+	}
+	
+	.cjComp{
+		border-style: solid;
+		border-color: var(--teal);
+		border-radius: 50px;
+		background-color: var(--teal);
+		padding: 1vmin;
+		margin-left: 1vmin;
+		display: inline-block;
+		font-size: 3.5vmin;
+		margin-top: 1vmin;
+	}
+	
+	.membershipText{
+		font-weight: 400; font-size: 3vmin; padding-top: 1vmin; padding-bottom: 1vmin;
+	}
+	
+	.membershipPrompt{
+		font-weight: 500;
+	}
+
+}
+
+
+
+
+
+
+.cjBox{
+	height: auto;
+	display: block;
+}
+
+.moneyIcon{
+	padding: 8vmin; 
+	background-color: white; 
+	border-radius: 9999px; 
+	border-color: grey;
+	text-align: center;
+	border-style: solid;
+	margin-top: 10vmin;
+	font-size: 15vmin;
+}

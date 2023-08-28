@@ -1,0 +1,95 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.desktopOfferBox{
+		width: 70%;
+		margin-left: 15%;
+		margin-top: 10vmin;
+		height: auto;
+		background-color: white;
+		padding-top: 1vmin;
+		padding-left: 3vmin;
+		padding-right: 2vmin;
+		padding-bottom: 3vmin;
+	}
+	
+	.offerPricingDisplay{
+		padding: 1vmin;
+		font-size: 2.5vmin;
+		margin-bottom: 0 !important;
+	}
+	
+	.offerPricingDescription{
+		font-size: 2vmin;
+		padding: 0.75rem;
+		
+	}
+	
+	.offerSectionTitle{
+		font-weight: 900;
+		font-size: 2vmin;
+		padding-left: 0.75rem;
+	}
+	.offerSectionDescription{
+		font-weight: 500;
+		font-size: 2vmin;
+		padding-left: 0.75rem;
+	}
+}
+
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	
+	.offerPricingDisplay{
+		padding: 3vmin;
+		font-size: 4vmin;
+		margin-bottom: 0 !important;
+	}
+	
+	.offerPricingDescription{
+		padding-left: 3vmin;
+		padding-right: 3vmin;
+	}
+	
+	.offerSectionTitle{
+	font-weight: 900;
+	font-size: 4vmin;
+	}
+	.offerSectionDescription{
+		font-weight: 500;
+		font-size: 3.5vmin;
+	}
+	
+}
+
+
+
+
+.offerBackground{
+	width: 100%;
+	padding-top: 5vmin;
+	background-color: white;
+}
+.mainOfferDisplay{
+	width: 90%;
+	margin-left: 5%;
+	padding-bottom: 5vmin;
+}
+.pricingBackground{
+	background-color: white;
+	width: 100%;
+	padding-top: 2vmin;
+	padding-bottom: 5vmin;
+}
+.mainOfferImage{
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1/1;
+}
+
+
+.belowOfferDisplay{
+	width: 84%;
+	margin-left: 8%;
+	padding-bottom: 5vmin;
+}

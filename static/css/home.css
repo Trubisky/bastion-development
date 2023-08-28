@@ -1,0 +1,44 @@
+
+.main-image {
+	display: block;
+	width: 100%;
+}
+
+.under-image {
+	width: 100%;
+	background-color: var(--b-darkblack);
+	color: white;
+	text-align: center;
+	padding-top: 13vmin !important;
+	padding-bottom: 13vmin !important;
+	padding: 8vmin;
+	display: block;
+}
+
+.future {
+	font-size: 7vmin;
+	line-height: 8vmin;
+	letter-spacing: .5vmin;
+	font-weight: 700;
+}
+
+.description {
+	margin-top: 4vmin;
+	font-weight: 500;
+	-webkit-text-stroke: .05vmin black;
+	margin-bottom: 4vmin;
+}
+
+.additional {
+	display: block;
+	padding-left: 8vmin;
+	padding-right: 8vmin;
+	padding-top: 13vmin;
+	padding-bottom: 13vmin;
+	color: var(--b-darkblack);
+}
+
+.droptext {
+	padding-top: 6vmin;
+	padding-bottom: 6vmin;
+}

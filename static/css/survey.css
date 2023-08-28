@@ -1,0 +1,199 @@
+@media only screen and (min-width: 768px) {
+	/* DESKTOP */
+	.surveyX{
+		 width: 40%;
+		 margin-left: 30%;
+	}
+	
+	.progressbar{
+		position: fixed;
+		bottom: 18vmin;
+		width: 40%;
+		margin-left: 30%;
+		color: var(--teal);
+	}
+	
+	
+	.undertext {
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 2vmin;
+		color: var(--b-black);
+		position: fixed;
+		bottom: 15vmin;
+		text-align: center;
+		width: 100%;
+	}
+	
+	.next {
+		margin-left: 35%;
+		position: fixed;
+		bottom: 8vmin;
+		background-color: white;
+		border-color: var(--teal);
+	}
+	
+	.prompt {
+		margin-top: 5vmin;
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 3.5vmin;
+		font-weight: 900;
+		line-height: 7vmin;
+		width: 100%;
+	}
+	
+	.back {
+		width: 100%;
+		text-align: center;
+		position: fixed;
+		bottom: 2.5vmin;
+		font-family: 'Montserrat';
+		font-size: 2.5vmin;
+	}
+	
+	.surveybox {
+		height: 50%;
+		overflow-y: scroll;
+		padding-top: 1vmin;
+		padding-bottom: 1vmin;
+	}
+	
+	
+
+	.slidein{
+		animation-name: slidein;
+		animation-duration: 500ms;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+	}
+
+	.slideout{
+		animation-name: slideout;
+		animation-duration: 500ms;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+	}
+
+	@keyframes slideout {
+	  0% {
+		margin-left: 30%;
+	  }
+	  100% {
+		margin-left: -100%;
+	  }
+	}
+
+	@keyframes slidein {
+	  0% {
+		margin-left: 100%;
+	  }
+	  100% {
+		margin-left: 0%;
+	  }
+	}
+}
+
+
+@media only screen and (max-width: 767px) {
+	/* MOBILE */
+	.surveyX{
+		 width: 100%;
+	}
+	
+	.progressbar{
+		position: fixed;
+		bottom: 25vmin;
+		width: 90%;
+		margin-left: 5%;
+		color: var(--teal);
+	}
+	
+	
+	.undertext {
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 3vmin;
+		color: var(--b-black);
+		position: fixed;
+		bottom: 25vmin;
+		text-align: center;
+		margin-left: 47vmin;
+	}
+	
+	.next {
+		margin-left: 12.5vmin;
+		position: fixed;
+		bottom: 8vmin;
+		background-color: white;
+		border-color: var(--teal);
+	}
+	
+	.prompt {
+		margin-top: 15vmin;
+		text-align: center;
+		font-family: 'Montserrat';
+		font-size: 7.5vmin;
+		font-weight: 900;
+		line-height: 8vmin;
+		width: 90%;
+		margin-left: 5%;
+	}
+	
+	.back {
+		margin-left: 35vmin;
+		position: fixed;
+		bottom: 2.5vmin;
+		font-family: 'Montserrat';
+		font-size: 3vmin;
+	}
+	
+	.surveybox {
+		height: 75vmin;
+		overflow-y: scroll;
+		padding-top: 1vmin;
+		padding-bottom: 1vmin;
+	}
+	
+	
+
+	.slidein{
+		animation-name: slidein;
+		animation-duration: 300ms;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+	}
+
+	.slideout{
+		animation-name: slideout;
+		animation-duration: 300ms;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+	}
+
+	@keyframes slideout {
+	  0% {
+		margin-left: 0%;
+	  }
+	  100% {
+		margin-left: -100%;
+	  }
+	}
+
+	@keyframes slidein {
+	  0% {
+		margin-left: 100%;
+	  }
+	  100% {
+		margin-left: 0%;
+	  }
+	}
+
+}
+
+
+
+.boxpad{
+	padding-bottom: 1vmin !important;
+	padding: 0vmin;
+}
