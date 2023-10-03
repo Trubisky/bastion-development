@@ -1,5 +1,5 @@
 var adminDashboardTemplate = `
-<div style="background-color: var(--b-darkblack); height: 100%;" key="1">
+<div style=" height: 100%;" key="1">
 	<img v-bind:src="$parent.profilePictureURL" class="profileImage" />
 	<div class="underProfilePic">
 		<div style="font-size: 4vmin;">

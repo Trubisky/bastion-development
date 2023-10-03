@@ -1,6 +1,7 @@
 var router = new VueRouter({
   routes: [
     {path: "/", component: home},
+	{path: "/about", component: about},
 	{path: "/createAccount", component: createAccount},
 	{path: "/survey", component: survey},
 	{path: "/login", component: login},
@@ -8,6 +9,7 @@ var router = new VueRouter({
 	{path: "/coachDashboard", component: coachDashboard},
 	{path: "/adminDashboard", component: adminDashboard},
 	{path: "/editProfile", component: editProfile},
+	{path: "/coachProfile", component: coachProfile},
 	{path: "/editSubscription", component: editSubscription},
 	{path: "/transactions", component: transactions},
 	{path: "/memberships", component: memberships},
@@ -27,7 +29,8 @@ var router = new VueRouter({
 	{path: "/coachJoin/:token", component: coachJoin},
 	{path: "/forgotPassword", component: forgotPassword},
 	{path: "/resetPassword/:resetToken", component: resetPassword},
-	{path: "/thankYou", component: thankYou}
+	{path: "/thankYou", component: thankYou},
+	{path: "/review1", component: review1}
   ],
   base: "/"
 });
@@ -48,11 +51,13 @@ var app = new Vue({
 		token: "",
 		showLoading: false,
 		isMobile: true,
+		id: 0,
 		name: "",
 		about: "",
 		isCoach: 0,
 		CoachID: -1,
 		isAdmin: 0,
+		location: null,
 		croppr: null,
 		showCroppr: false,
 		cropprSrc: "",
@@ -130,12 +135,14 @@ var app = new Vue({
 		});
 	},
 	refreshHome: function(){
-		axios.get("/getProfileInfo").then(res => {
+		return axios.get("/getProfileInfo").then(res => {
 			console.log(res.data);
 			this.profilePictureURL = res.data.PROFILEPICTURE;
 			this.name = res.data.NAME;
 			this.about = res.data.ABOUT;
 			this.isCoach = res.data.ISCOACH;
+			this.id = res.data.ID;
+			this.location = res.data.LOCATION;
 			this.CoachID = res.data.COACHID;
 			this.isAdmin = res.data.ADMIN;
 			if (this.CoachID != -1){

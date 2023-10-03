@@ -41,45 +41,48 @@ var offersTemplate = `
 		<br />
 		<div class="columns">
 			<div class="column is-3 filterColumn">
-				<span style="font-weight: 900;">Filter</span>
+				<span style="font-weight: 900;">Filters (Coming Soon)</span>
 				<br /><br />
-				<div class="b-breaker"></div>
-				<div class="columns">
-					<div class="column is-9">
-						Expertise
+				<div style="background-color: var(--light-bg-color); padding: 3vmin; border-radius: 10px;">
+					<div class="b-breaker"></div>
+					<div class="columns">
+						<div class="column is-9">
+							Expertise
+						</div>
+						<div class="column is-3" style="align-items: last baseline; display: flex;">
+							<i class="fa-solid fa-angle-down"></i>
+						</div>
 					</div>
-					<div class="column is-3" style="align-items: last baseline; display: flex;">
-						<i class="fa-solid fa-angle-down"></i>
+					<div class="b-breaker"></div>
+					<div class="columns">
+						<div class="column is-9">
+							Languages
+						</div>
+						<div class="column is-3" style="align-items: last baseline; display: flex;">
+							<i class="fa-solid fa-angle-down"></i>
+						</div>
 					</div>
+					<div class="b-breaker"></div>
+					<div class="columns">
+						<div class="column is-9">
+							Coaching Style
+						</div>
+						<div class="column is-3" style="align-items: last baseline; display: flex;">
+							<i class="fa-solid fa-angle-down"></i>
+						</div>
+					</div>
+					<div class="b-breaker"></div>
+					<div class="columns">
+						<div class="column is-9">
+							Gender
+						</div>
+						<div class="column is-3" style="align-items: last baseline; display: flex;">
+							<i class="fa-solid fa-angle-down"></i>
+						</div>
+					</div>
+					<div class="b-breaker"></div>
 				</div>
-				<div class="b-breaker"></div>
-				<div class="columns">
-					<div class="column is-9">
-						Languages
-					</div>
-					<div class="column is-3" style="align-items: last baseline; display: flex;">
-						<i class="fa-solid fa-angle-down"></i>
-					</div>
-				</div>
-				<div class="b-breaker"></div>
-				<div class="columns">
-					<div class="column is-9">
-						Coaching Style
-					</div>
-					<div class="column is-3" style="align-items: last baseline; display: flex;">
-						<i class="fa-solid fa-angle-down"></i>
-					</div>
-				</div>
-				<div class="b-breaker"></div>
-				<div class="columns">
-					<div class="column is-9">
-						Gender
-					</div>
-					<div class="column is-3" style="align-items: last baseline; display: flex;">
-						<i class="fa-solid fa-angle-down"></i>
-					</div>
-				</div>
-				<div class="b-breaker"></div>
+				
 			</div>
 			<div class="column is-9">
 				<div class="columns">

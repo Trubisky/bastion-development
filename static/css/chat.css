@@ -1,6 +1,7 @@
 .chatWindow{
 	width: 30%;
 	aspect-ratio: 1/1;
+	overflow-y: scroll;
 	margin-left: 35%;
 	margin-top: 15vmin;
 	background-color: white;

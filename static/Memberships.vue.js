@@ -35,7 +35,7 @@ var membershipsTemplate = `
 		</div>
 		<div class="columns is-mobile" v-if="!$parent.isMobile">
 			<div class="column is-11">
-				Memberships
+				Memberships &nbsp <i v-on:click="newMembership()" class="fa-solid fa-plus" style="color: var(--teal);"></i>
 			</div>
 			<div class="column arrowAdjust" v-on:click="$parent.navigate('/dashboard')">
 				<i class="fa-solid fa-x"></i>
@@ -83,6 +83,7 @@ var memberships = {
   data: function(){
     return{
 		plans: [],
+		add: true,
 		editingPlan: {TITLE: "Basic", DESCRIPTION: "bingus googas", PRICE: 100, FEATURES: [{FEATURE: "1"}, {FEATURE: "1"}, {FEATURE: "1"}, {FEATURE: "1"}]},
 		selectedEditIndex: 0,
 		showEditing: false,
@@ -91,6 +92,14 @@ var memberships = {
     }
   },
   methods:{
+	newMembership: async function(){
+		if (!this.add){
+			return;
+		}
+		this.add = false;
+		await axios.get("/createPricing");
+		location.reload();
+	},
 	edit: function(selectedPlan){
 
 			if (!this.plans[selectedPlan].EDITING){

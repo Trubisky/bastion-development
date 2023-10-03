@@ -51,11 +51,11 @@ var coachJoinTemplate = `
 			</div>
 		</div>
 		<div class="b-breaker"></div>
-		<div class="columns is-mobile" style="text-align: center; margin-bottom: -1%;" v-for="(lang, index) in payload.languages">
+		<div class="columns is-mobile" style="text-align: center;" v-for="(lang, index) in payload.languages">
 			<div class="column is-6">
 				<div class="select is-medium width95">
 				  <select style="width: 100%;" v-model="payload.languages[index].language">
-					<option>English (Default)</option>
+					<option>English</option>
 					<option>Spanish</option>
 					<option>Chinese</option>
 					<option>Arabic</option>
@@ -207,10 +207,10 @@ var coachJoinTemplate = `
 		<br />
 		<div class="columns is-mobile w95" style="margin-bottom: 0;">
 			<div class="column is-2 joinRadio">
-				<input type="radio" name="form1" value="I perfer more independent clients" class="joinRadioButton" v-model="payload.accountable">
+				<input type="radio" name="form1" value="I prefer more independent clients" class="joinRadioButton" v-model="payload.accountable">
 			</div>
 			<div class="column is-10 desktopRadio">
-				I perfer more independent clients.
+				I prefer more independent clients.
 			</div>
 		</div>
 		<div class="columns is-mobile w95" style="margin-bottom: 0;">
@@ -247,7 +247,7 @@ var coachJoinTemplate = `
 		</div>
 	</div>
 	<div v-if="selectedIndex == 8" class="w95">
-		<h1 class="cjQuestionHeader">Do you have experience preparing clients for competetion?</h1>	
+		<h1 class="cjQuestionHeader">Do you have experience preparing clients for competition?</h1>	
 		<div class="select w95" v-bind:class="{'is-large': !$parent.isMobile}">
 		  <select style="width: 100%;" v-model="payload.compExperience">
 			<option>Yes</option>
@@ -365,7 +365,7 @@ var coachJoin = {
   template: coachJoinTemplate,
   data: function(){
     return{
-		selectedIndex: 4,
+		selectedIndex: 0,
 		showPFP: false,
 		onboardURL: "",
 		comp: "",

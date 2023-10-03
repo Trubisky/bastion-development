@@ -44,6 +44,7 @@ var chatDesktop = {
   data: function(){
     return{
 		messages: [],
+		interval: null,
 		name: "",
 		profilePicture: "",
 		message: "",
@@ -65,6 +66,9 @@ var chatDesktop = {
 		this.message = "";
 	}
   },
+  beforeUnmount: function(){
+	  clearInterval(this.interval);
+  },
   created: function(){
 	
 	eventBus.$on("chat-opened", (input) => {
@@ -79,6 +83,15 @@ var chatDesktop = {
 			this.name = res.data.NAME;
 			this.profilePicture = res.data.PROFILEPICTURE;
 		});
+		
+		this.interval = setInterval(() => {
+		
+			axios.get("/getMessages/" + this.fromid).then(res => {
+				this.messages = res.data;
+				console.log("refreshed messages");
+			});
+			
+		}, 8000);
 		
     });
 	
@@ -98,6 +111,7 @@ var chat = {
   template: chatTemplate,
   data: function(){
     return{
+		interval: null,
 		messages: [],
 		name: "",
 		profilePicture: "",
@@ -120,6 +134,16 @@ var chat = {
   },
   created: function(){
 	this.fromid = this.$route.params.fromid;
+	
+	this.interval = setInterval(() => {
+		
+		axios.get("/getMessages/" + this.fromid).then(res => {
+			this.messages = res.data;
+			console.log("refreshed messages");
+		});
+		
+	}, 8000);
+	
 	axios.get("/getMessages/" + this.$route.params.fromid).then(res => {
 		this.messages = res.data;
 	});
@@ -127,6 +151,10 @@ var chat = {
 		this.name = res.data.NAME;
 		this.profilePicture = res.data.PROFILEPICTURE;
 	});
+	
+  },
+  beforeUnmount: function(){
+	  clearInterval(this.interval);
   },
   watch: {
 	  messages: async function(val){

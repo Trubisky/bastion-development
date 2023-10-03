@@ -31,7 +31,7 @@ var coachDashboardTemplate = `
 			</div>
 		</div>
 		<div class="b-breaker breaker-adjust" style="opacity: 0.5;"></div>
-		<div style="width: 100%;  cursor: pointer;" class="columns is-mobile drop" v-on:click="$parent.navigate('/editProfile')">
+		<div style="width: 100%;  cursor: pointer;" class="columns is-mobile drop" v-on:click="$parent.navigate('/coachProfile')">
 			<div class="column">
 				My Profile
 			</div>
@@ -58,7 +58,6 @@ var coachDashboardTemplate = `
 			</div>
 		</div>
 		
-		<button class="button b-button b-centerbutton">View Trainerize</button>
 	</div>
 </div>
 `;

@@ -86,7 +86,7 @@ var dashboard = {
 	},
 	openPortal: function(){
 		axios.get("/getStripePortalURL").then(res => {
-			window.location.href = res.data;
+			window.open(res.data, '_blank');
 		});
 	},
 	viewCoach: function(){

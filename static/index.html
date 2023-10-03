@@ -2,14 +2,14 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="shortcut icon" href="https://uploads-ssl.webflow.com/6254580345036e67d0add6c0/6256278ee553ab33b2cba289_20220411_221335_0000.png">
-		<title>Bastion Fit</title>
+		<title>Bastion</title>
 		<!-- External styling and font resources -->
 		<script src="/resources/js/fontawesome.js"></script>
 		<script src="/resources/js/croppr.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@300;400;600&family=Inter:wght@400;700&family=Jost:wght@600&family=Montserrat:wght@500;600;700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
 		<!-- end styling resources -->
 		
 		<!--Vue and jquery resources, plus axios-->
@@ -20,6 +20,10 @@
 		<script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
 		<!--End external JS resources -->
 		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 		<!--Internal styling resources -->
 		<link rel="stylesheet" href="/css/bastion-templates.css">
 		<link rel="stylesheet" href="/css/home.css">
@@ -42,6 +46,7 @@
 		
 		<!-- Vue page links -->
 		<script src="/Home.vue.js"></script>
+		<script src="/About.vue.js"></script>
 		<script src="/createAccount.vue.js"></script>
 		<script src="/Login.vue.js"></script>
 		<script src="/Survey.vue.js"></script>
@@ -54,6 +59,7 @@
 		<script src="/adminViewClient.vue.js"></script>
 		<script src="/adminViewCoachClients.vue.js"></script>
 		<script src="/editProfile.vue.js"></script>
+		<script src="/coachProfile.vue.js"></script>
 		<script src="/editSubscription.vue.js"></script>
 		<script src="/Transactions.vue.js"></script>
 		<script src="/Memberships.vue.js"></script>
@@ -69,6 +75,7 @@
 		<script src="/forgotPassword.vue.js"></script>
 		<script src="/resetPassword.vue.js"></script>
 		<script src="/thankYou.vue.js"></script>
+		<script src="/Review1.vue.js"></script>
 		<!--end vue links -->
 	</head>
 	<body>
@@ -80,8 +87,8 @@
 			-->
 			<nav class="navbar is-white" role="navigation" aria-label="main navigation" v-bind:class="{'b-navpadnew': isMobile, 'b-navpad-dnew': !isMobile}">
 				<div class="navbar-brand">
-					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="isMobile">
-						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					<a class="navbar-item" href="/" v-if="isMobile">
+						<img src="/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
 					</a>
 					<a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': showHamburger}" v-on:click="toggleHamburger()">
 						<span aria-hidden="true"></span>
@@ -101,17 +108,17 @@
 							Login
 						</a>
 					</div>
-					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="!isMobile">
-						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					<a class="navbar-item" href="/" v-if="!isMobile">
+						<img src="/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
 					</a>
 					<div class="navbar-end">
-						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}" href="https://blog.bastionfit.com/">
+						<a class="navbar-item" v-bind:class="{'b-item': isMobile}" href="https://blog.bastionfit.com/">
 							Blog
 						</a>
-						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+						<a class="navbar-item" v-bind:class="{'b-item': isMobile}" v-on:click="navigate('/about')">
 							About
 						</a>
-						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}">
+						<a class="navbar-item b-disabled" v-bind:class="{'b-item': isMobile}" v-on:click="slideUpMessage('Coming soon.')">
 							Shop
 						</a>
 					</div>
@@ -145,15 +152,15 @@
 							Blog
 						</a>
 					</div>
-					<a class="navbar-item" href="https://dev.bastionfit.com/" v-if="!isMobile">
-						<img src="https://dev.bastionfit.com/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
+					<a class="navbar-item" href="/" v-if="!isMobile">
+						<img src="/resources/bastionlight.png" alt="BastionFit" width="112" height="28">
 					</a>
 					<div class="navbar-end">
 						
-						<a class="navbar-item b-disabled"  v-bind:class="{'b-item': isMobile}">
+						<a class="navbar-item"  v-bind:class="{'b-item': isMobile}" v-on:click="navigate('/about')">
 							About
 						</a>
-						<a class="navbar-item b-disabled"  v-bind:class="{'b-item': isMobile}">
+						<a class="navbar-item b-disabled"  v-bind:class="{'b-item': isMobile}" v-on:click="slideUpMessage('Coming soon.')">
 							Shop
 						</a>
 						<a class="navbar-item" v-on:click="logOut()"  v-bind:class="{'b-item': isMobile}">
@@ -169,7 +176,7 @@
 				</router-view> 
 			</transition>
 			
-			<input id="picture-upload" type="file" v-on:change="uploadPicture" style="visibility: hidden;" value="null"/>
+			<input id="picture-upload" type="file" v-on:change="uploadPicture" style="display: none;" value="null"/>
 			<div id="slideUpMessage" style="background-color: white;" v-bind:class="{messagein: playMessageIn, messageout: playMessageOut}">
 				{{sliderMessage}}
 			</div>
@@ -190,7 +197,7 @@
 					<chat-client id="desktopChatClient" style="display: none;"></chat-client>
 				</div>
 			</div>
-			<div class="overlay" v-if="showCroppr">
+			<div class="overlay" v-if="showCroppr" style="overflow-y: scroll;">
 				<div class="imageCrop box">
 					<img v-bind:src="cropprSrc" id="cropprImage"  />
 					<div class="cropLoading" v-if="!croppr">

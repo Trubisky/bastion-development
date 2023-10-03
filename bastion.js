@@ -16,14 +16,17 @@ var fs = require('fs');
 var request = require('request');
 
 app.use(express.static('static'));
+
+app.use("/landing", express.static("landing"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit: "50mb"}));
 
 dbModule.initDB();
 
 const ssl = {
-  key: fs.readFileSync('/etc/letsencrypt/live/dev.bastionfit.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/dev.bastionfit.com/fullchain.pem')
+  key: fs.readFileSync('/etc/letsencrypt/live/prod.bastionfit.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/prod.bastionfit.com/fullchain.pem')
 };
 
 app.get("/blog*", async function(req, res){
@@ -31,6 +34,7 @@ app.get("/blog*", async function(req, res){
 	var newUrl = "https://blog.bastionfit.com" + req.originalUrl.substring(5);
 	req.pipe(request(newUrl)).pipe(res);
 	//res.sendStatus(200);
+	
 });
 
 
@@ -154,7 +158,7 @@ app.post("/updateAbout", async function(req, res){
 });
 
 app.get("/getProfileInfo", async function(req, res){
-	var result = await dbModule.dbGet('SELECT NAME, ADMIN, PROFILEPICTURE, ISCOACH, COACHID, ABOUT FROM USER WHERE TOKEN LIKE ?;', [req.headers.token]);
+	var result = await dbModule.dbGet('SELECT ID, NAME, ADMIN, PROFILEPICTURE, LOCATION, ISCOACH, COACHID, ABOUT FROM USER WHERE TOKEN LIKE ?;', [req.headers.token]);
 	if (!result){
 		res.sendStatus(401);
 		return;
@@ -206,6 +210,45 @@ app.post("/updatePricings", async function(req, res){
 	res.sendStatus(201);
 });
 
+app.get("/requestPasswordReset", async function(req, res){
+	var userID = await authModule.resolveUserId(req.headers.token);
+	if (!userID){
+		res.sendStatus(401);
+		return;
+	}
+	var userRow = await dbModule.dbGet('SELECT EMAIL FROM USER WHERE ID = ?;', [userID]);
+	
+	
+	var resetToken = authModule.generateToken();
+	var expiresTime = Math.floor(Date.now() / 1000) + 1800;
+	
+	await dbModule.dbRun('INSERT INTO RESETPASSWORD (USERID, RESETTOKEN, EXPIRES) VALUES (?, ?, ?);', [userID, resetToken, expiresTime]);
+	
+	mailModule.sendResetPassword(userRow.EMAIL, resetToken);
+	
+	
+	res.sendStatus(200);
+});
+
+app.get("/createPricing", async function(req, res){
+	var userID = await authModule.resolveUserId(req.headers.token);
+	if (!userID){
+		res.sendStatus(401);
+		return;
+	}
+	await dbModule.dbRun('INSERT INTO PRICINGS (COACHID, TITLE, DESCRIPTION, PRICE) VALUES (?, ?, ?, ?);', [userID, "New Membership", "An editable bastion membership.", 100.00]);
+	var pricingRow = await dbModule.dbGet('SELECT ID FROM PRICINGS ORDER BY ID DESC LIMIT 5', []);
+	var cpRow = await dbModule.dbGet('SELECT * FROM COACH_PRODUCT WHERE COACHID = ?;', [userID]);
+	
+	var price = await billingModule.createPrice(10000, cpRow.PRODUCTID);
+
+	await dbModule.dbRun("INSERT INTO PRICINGS_STRIPE (PRICINGID, STRIPEPRODUCTID, STRIPEPRICEID) VALUES (?, ?, ?);", [pricingRow.ID, cpRow.PRODUCTID, price.id]);
+	
+	res.sendStatus(200);
+	
+});
+
+
 app.get("/getOpenClients", async function(req, res){
 	var userID = await authModule.resolveUserId(req.headers.token);
 	if (!userID){
@@ -225,6 +268,11 @@ app.get("/getOpenClients", async function(req, res){
 		}
 		newResult.push(localUser);
 	}
+	var assignedClients = await dbModule.dbAll("SELECT * FROM ASSIGNCOACHES WHERE COACHID = ?;", [userID]);
+	assignedClients = assignedClients.map(o => o.CLIENTID);
+	
+	newResult = newResult.filter(client => assignedClients.includes(client.ID));
+	
 	
 	res.send(newResult);
 });
@@ -335,6 +383,8 @@ app.post("/sendOffer", async function(req, res){
 		res.status(307).send(obLink);
 		return; 
 	}
+	var userRow = await dbModule.dbGet("SELECT NAME, EMAIL FROM USER WHERE ID = ?;", [req.body.clientID]);
+	mailModule.sendOfferEmail(userRow.NAME, userRow.EMAIL);
 	
 	dbModule.dbRun('INSERT INTO OFFERS (CLIENTID, COACHID, PRICINGID) VALUES (?, ?, ?);', [req.body.clientID, userID, req.body.planID]);
 	dbModule.dbRun('INSERT INTO MESSAGES (FROMID, TOID, MESSAGE) VALUES (?, ?, ?);', [userID, req.body.clientID, req.body.greeting]);
@@ -391,6 +441,48 @@ app.post("/sendMessage", async function(req, res){
 	res.sendStatus(200);
 });
 
+app.post("/leaveReview", async function(req, res){
+	var userID = await authModule.resolveUserId(req.headers.token);
+	if (!userID){
+		res.sendStatus(401);
+		return;
+	}
+	
+	var before = req.body.before;
+	if (before){
+		before = before.split(';base64,').pop();
+		before = await resourceModule.uploadPicture(before);
+	}
+	var after = req.body.after;
+	if (after){
+		after = after.split(';base64,').pop();
+		after = await resourceModule.uploadPicture(after);
+	}
+	
+	var userRow = await dbModule.dbGet("SELECT COACHID FROM USER WHERE ID = ?;", [userID]);
+	
+	await dbModule.dbRun('INSERT INTO REVIEWS (COACHID, CLIENTID, REVIEW, BEFORERESOURCE, AFTERRESOURCE) VALUES (?, ?, ?, ?, ?);', [userRow.COACHID, userID, req.body.review, before, after]);
+	res.sendStatus(200);
+	
+});
+
+app.get("/getReviews/:coachid", async function(req, res){
+	/*
+	var userID = await authModule.resolveUserId(req.headers.token);
+	if (!userID){
+		res.sendStatus(401);
+		return;
+	}
+	*/
+	var reviews = await dbModule.dbAll("SELECT * FROM REVIEWS WHERE COACHID = ?;", [req.params.coachid]);
+	for (var i=0; i<reviews.length; i++){
+		var userRow = await dbModule.dbGet("SELECT NAME, PROFILEPICTURE FROM USER WHERE ID = ?;", [reviews[i].CLIENTID]);
+		reviews[i].reviewInfo = userRow;
+	}
+	res.send(reviews);
+	
+});
+
 app.get("/getOffers", async function(req, res){
 	var userID = await authModule.resolveUserId(req.headers.token);
 	if (!userID){
@@ -441,7 +533,7 @@ app.get("/getOffer/:offerid", async function(req, res){
 		return;
 	}
 	var payload = {};
-	payload.profileInfo = await dbModule.dbGet('SELECT NAME, PROFILEPICTURE, ABOUT FROM USER WHERE ID = ?;', [offer.COACHID]);
+	payload.profileInfo = await dbModule.dbGet('SELECT NAME, PROFILEPICTURE, LOCATION, ABOUT FROM USER WHERE ID = ?;', [offer.COACHID]);
 	payload.profileInfo.ATTRIBUTES = await dbModule.dbGet('SELECT * FROM COACHATTRIBUTES WHERE COACHID = ?;', [offer.COACHID]);
 	payload.profileInfo.EXPERTISE  = await new Promise(async function(resolve, reject){
 		var resultArray = [];
@@ -465,7 +557,7 @@ app.get("/getOffer/:offerid", async function(req, res){
 
 app.get("/getCoachDisplay/:coachid", async function(req, res){
 	var payload = {};
-	payload.profileInfo = await dbModule.dbGet('SELECT NAME, PROFILEPICTURE, ABOUT FROM USER WHERE ID = ?;', [req.params.coachid]);
+	payload.profileInfo = await dbModule.dbGet('SELECT NAME, PROFILEPICTURE, LOCATION, ABOUT FROM USER WHERE ID = ?;', [req.params.coachid]);
 	payload.profileInfo.ATTRIBUTES = await dbModule.dbGet('SELECT * FROM COACHATTRIBUTES WHERE COACHID = ?;', [req.params.coachid]);
 	payload.profileInfo.EXPERTISE  = await new Promise(async function(resolve, reject){
 		var resultArray = [];
@@ -494,7 +586,8 @@ app.post("/startCoaching", async function(req, res){
 	}
 	var hasPaymentMethod = await billingModule.checkPaymentMethod(userID);
 	if (!hasPaymentMethod){
-		var setupURL = await billingModule.createSetupSession(userID, "https://dev.bastionfit.com/#/coachOffer/" + req.body.offerID);
+		//var setupURL = await billingModule.createSetupSession(userID, "https://dev.bastionfit.com/#/coachOffer/" + req.body.offerID);
+		var setupURL = await billingModule.createSetupSession(userID, "https://bastionfit.com/#/offers");
 		res.status(307).send(setupURL);
 		return;
 	}
@@ -679,7 +772,7 @@ app.post("/adminInviteCoach", async function(req, res){
 		[coachID, "Intermediate Membership", desc2, 130]);
 		*/
 		 
-	mailModule.inviteCoach(req.body.name, req.body.email, token);
+	mailModule.inviteCoach(req.body.name, req.body.password, req.body.email, token);
 	res.sendStatus(200);
 });
 
@@ -745,6 +838,18 @@ app.get("/getStripeSetupURL", async function(req, res){
 	}
 	var setupURL = await billingModule.createSetupSession(userID);
 	res.send(setupURL);
+});
+
+app.get("/getStripeBalance", async function(req, res){
+	var userID = await authModule.resolveUserId(req.headers.token);
+	if (!userID){
+		res.sendStatus(401);
+		return;
+	}
+	var balance = await billingModule.getBalance(userID);
+	console.log(balance);
+	res.send({available: balance.available[0].amount / 100, pending: balance.pending[0].amount / 100});;
+	
 });
 
 app.get("/getStripeLoginURL", async function(req, res){

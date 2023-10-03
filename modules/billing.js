@@ -1,8 +1,6 @@
 //Module for stripe integration
 const stripe = require('stripe')('');
-var dbModule = require('/home/modules/database.js')
-
-
+var dbModule = require('/home/modules/database.js');
 /*
 createConnectedAccount
 
@@ -21,14 +19,14 @@ exports.createConnectedAccount = function(userID){
 			country: "US",
 			email: userRow.EMAIL,
 			business_type: "individual",
-			business_profile: {url: "dev.bastionfit.com"}
+			business_profile: {url: "bastionfit.com"}
 		}
 		var newAccount = await stripe.accounts.create(caPayload);
 		
 		var accountLink = await stripe.accountLinks.create({
 			account: newAccount.id,
-			refresh_url: 'https://dev.bastionfit.com/#/coachDashboard',
-			return_url: 'https://dev.bastionfit.com/#/coachDashboard',
+			refresh_url: 'https://bastionfit.com/#/coachDashboard',
+			return_url: 'https://bastionfit.com/#/coachDashboard',
 			type: 'account_onboarding',
 		});
 		dbModule.dbRun('INSERT INTO BANKING (USERID, STRIPEID) VALUES (?, ?);', [userID, newAccount.id]);
@@ -77,8 +75,8 @@ exports.generateOnboardingLink = function(userID){
 		}
 		var accountLink = await stripe.accountLinks.create({
 			account: bankingRow.STRIPEID,
-			refresh_url: 'https://dev.bastionfit.com/#/coachDashboard',
-			return_url: 'https://dev.bastionfit.com/#/coachDashboard',
+			refresh_url: 'https://bastionfit.com/#/coachDashboard',
+			return_url: 'https://bastionfit.com/#/coachDashboard',
 			type: 'account_onboarding',
 		});
 		resolve(accountLink.url);
@@ -129,7 +127,7 @@ exports.createCustomer = function(userID){
 //Creates a setup session, with an optional parameter for a return URL
 exports.createSetupSession = function(userID, returnURL){
 	if (!returnURL){
-		returnURL = "https://dev.bastionfit.com/#/dashboard";
+		returnURL = "https://bastionfit.com/#/dashboard";
 	}
 	return new Promise(async function(resolve, reject){
 		var bankingRow = await dbModule.dbGet("SELECT * FROM BANKING WHERE USERID = ?;", [userID]);
@@ -148,7 +146,7 @@ exports.createPortalSession = function(userID){
 	return new Promise(async function(resolve, reject){
 		var bankingRow = await dbModule.dbGet("SELECT * FROM BANKING WHERE USERID = ?;", [userID]);
 		var session = await stripe.billingPortal.sessions.create({
-			return_url: "https://dev.bastionfit.com/#/dashboard",
+			return_url: "https://bastionfit.com/#/dashboard",
 			customer: bankingRow.STRIPEID
 		});
 		resolve(session.url);
@@ -219,6 +217,15 @@ exports.updateSubscriptionPrice = function(pricingID, newPrice){
 	});
 }
 
+exports.getBalance = function(userID){
+	return new Promise(async function(resolve, reject){
+		var bankingRow = await dbModule.dbGet("SELECT * FROM BANKING WHERE USERID = ?;", [userID]);
+		var balance = await stripe.balance.retrieve({
+		  stripeAccount: bankingRow.STRIPEID,
+		});
+		resolve(balance);
+	});
+}
 
 
 

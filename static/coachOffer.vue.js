@@ -13,7 +13,7 @@ var coachOfferTemplate = `
 					<div style="text-align: center;">
 						<span style="font-weight: 900; font-size: 5vmin;">{{profileInfo.NAME}}</span>
 						<br />
-						<span style="font-weight: 500; font-size: 3.5vmin;">Ann Arbor, Michigan</span>
+						<span style="font-weight: 500; font-size: 3.5vmin;">{{profileInfo.LOCATION}}</span>
 					</div>
 					<br />
 					<div class="columns is-mobile offerPricingDisplay">
@@ -90,7 +90,7 @@ var coachOfferTemplate = `
 	</div>
 	<div v-if="!$parent.isMobile">
 		<div class="overlay" v-bind:class="{hidden: errorHidden}" style="z-index: 7;">
-			<div class="popup">
+			<div class="popup" style="width: 40% !important; margin-left: 15% !important;">
 				You must add a payment method before you can begin working with a Coach. You will be redirected momentarily. 
 			</div>
 		</div>
@@ -100,7 +100,7 @@ var coachOfferTemplate = `
 				<div style="text-align: center;">
 					<span style="font-weight: 900; font-size: 4vmin;">{{profileInfo.NAME}}</span>
 					<br />
-					<span style="font-weight: 500; font-size: 2.5vmin;">Ann Arbor, Michigan</span>
+					<span style="font-weight: 500; font-size: 2.5vmin;">{{profileInfo.LOCATION}}</span>
 					<br />
 					<button class="button b-button" style="width: auto; color: black; font-size: 3vmin; height: 6vmin;" v-on:click="startCoaching()">Train with {{profileInfo.NAME.split(" ")[0]}}</button>
 				</div>
@@ -128,17 +128,17 @@ var coachOfferTemplate = `
 				</div>
 				<br />
 				<div class="columns" style="padding: 0.75rem;">
-					<div class="column is-4">
+					<div class="column is-4" style="word-break: break-word;">
 						<div style="font-weight: 900;">COACHING STYLES</div><br />
 						{{profileInfo.ATTRIBUTES.ATTRIBUTE1}}<br />
 						{{profileInfo.ATTRIBUTES.ATTRIBUTE2}}<br />
 						{{profileInfo.ATTRIBUTES.ATTRIBUTE3}}<br />
 					</div>
-					<div class="column is-4">
+					<div class="column is-4" style="word-break: break-word;">
 						<div style="font-weight: 900;">EXPERTISE</div><br />
 						<span v-for="exp of profileInfo.EXPERTISE">{{exp}}<br /></span>
 					</div>
-					<div class="column is-4">
+					<div class="column is-4" style="word-break: break-word;">
 						<span style="font-weight: 900;">LANGUAGES</span><br /><br />
 						<span v-for="lang of profileInfo.LANGUAGES">{{lang.LANGUAGE}} ({{lang.FLUENCY}})<br /></span>
 					</div>
@@ -159,7 +159,7 @@ var coachOffer = {
 		offerid: 0,
 		startDebounce: true,
 		errorHidden: true,
-		profileInfo: {ABOUT: "", NAME: "", PROFILEPICTURE: "", ATTRIBUTES: {ATTRIBUTE1: "", ATTRIBUTE2: "", ATTRIBUTE3: ""}},
+		profileInfo: {ABOUT: "", NAME: "", LOCATION: "", PROFILEPICTURE: "", ATTRIBUTES: {ATTRIBUTE1: "", ATTRIBUTE2: "", ATTRIBUTE3: ""}},
 		pricingInfo: {DESCRIPTION: "", TITLE: "", PRICE: 0, FEATURES: []},
 		certifications: []
     }

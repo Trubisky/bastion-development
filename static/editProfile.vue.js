@@ -46,6 +46,15 @@ var editProfileTemplate = `
 		</div>
 	</div>
 	<div class="b-breaker"></div>
+	<div class="columns is-mobile" style="padding-left: 4vmin; padding-right: 4vmin; padding-top: 4vmin;">
+		<div class="column is-10" style="font-weight: 900;">
+			Account Controls
+		</div>
+	</div>
+	<div class="aboutContent">
+		<span style="color: var(--teal);" v-on:click="resetPassword()">Reset my Password</span>
+	</div>
+	
 	<div class="columns is-mobile" style="padding-left: 4vmin; padding-right: 4vmin; padding-top: 4vmin;" v-show="$parent.isCoach">
 		<div class="column is-10" style="font-weight: 900;">
 			Certifications
@@ -95,6 +104,10 @@ var editProfile = {
     }
   },
   methods:{
+	resetPassword: async function(){
+		await axios.get("/requestPasswordReset");
+		this.$parent.slideUpMessage("A reset password link has been sent to your email.");
+	},
 	editClick: function(){
 		this.editing = !this.editing;
 		if (!this.editing){
@@ -122,13 +135,18 @@ var editProfile = {
 		this.certifications.splice(index, 1);
     }
   },
-  created: function(){
-	
+  created: async function(){
+		await this.$parent.refreshHome();
+		
 		axios.get('/getCertifications').then(res => {
 			if (res.data.length >= 1){
 				this.certifications = res.data;
 			}
 		});
+		
+		if (this.$parent.isCoach){
+			axios.get("/getStripeBalance");
+		}
 	
   }
  }
